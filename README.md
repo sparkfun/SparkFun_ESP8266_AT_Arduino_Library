@@ -1,7 +1,7 @@
 SparkFun ESP8266 AT Arduino Library
 ========================================
 
-![SparkFun ESP8266 WiFi Shield](https://www.sparkfun.com/products/13287)
+![SparkFun ESP8266 WiFi Shield](https://cdn.sparkfun.com//assets/parts/1/0/5/3/8/13287-01.jpg)
 
 [*SparkFun ESP8266 WiFi Shield (WRL-13287)*](https://www.sparkfun.com/products/13287)
 
