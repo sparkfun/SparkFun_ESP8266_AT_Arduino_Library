@@ -34,10 +34,14 @@ public:
 	ESP8266Client(uint8_t sock);
 
 	uint8_t status();
+	
 	virtual int connect(IPAddress ip, uint16_t port);
-	int connect(IPAddress ip, uint16_t port, uint32_t keepAlive);
 	virtual int connect(const char *host, uint16_t port);
+	
+	int connect(IPAddress ip, uint16_t port, uint32_t keepAlive);
+	int connect(String host, uint16_t port, uint32_t keepAlive = 0);
 	int connect(const char *host, uint16_t port, uint32_t keepAlive);
+	
 	virtual size_t write(uint8_t);
 	virtual size_t write(const uint8_t *buf, size_t size);
 	virtual int available();

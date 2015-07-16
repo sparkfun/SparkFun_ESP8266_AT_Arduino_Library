@@ -28,7 +28,7 @@ Distributed as-is; no warranty is given.
 ////////////////////////
 // Buffer Definitions //
 ////////////////////////
-#define ESP8266_RX_BUFFER_LEN 256 // Number of bytes in the serial receive buffer
+#define ESP8266_RX_BUFFER_LEN 128 // Number of bytes in the serial receive buffer
 char esp8266RxBuffer[ESP8266_RX_BUFFER_LEN];
 unsigned int bufferHead; // Holds position of latest byte placed in buffer.
 

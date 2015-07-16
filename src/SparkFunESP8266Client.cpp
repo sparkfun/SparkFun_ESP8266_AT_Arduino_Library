@@ -47,6 +47,11 @@ int ESP8266Client::connect(const char *host, uint16_t port)
 	return connect(host, port, 0);
 }
 
+int ESP8266Client::connect(String host, uint16_t port, uint32_t keepAlive)
+{
+	return connect(host.c_str(), port, keepAlive);
+}
+	
 int ESP8266Client::connect(IPAddress ip, uint16_t port, uint32_t keepAlive) 
 {
 	char ipAddress[16];
