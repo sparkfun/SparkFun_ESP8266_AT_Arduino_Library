@@ -33,8 +33,8 @@ Distributed as-is; no warranty is given.
 //////////////////////////////
 // Replace these two character strings with the name and
 // password of your WiFi network.
-const char mySSID[] = "PiFi";
-const char myPSK[] = "sparkfun";
+const char mySSID[] = "yourSSIDhere";
+const char myPSK[] = "yourPWDhere";
 
 //////////////////////////////
 // ESP8266Server definition //
