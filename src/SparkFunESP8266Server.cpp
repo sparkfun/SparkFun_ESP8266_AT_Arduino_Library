@@ -41,7 +41,6 @@ ESP8266Client ESP8266Server::available(uint8_t wait)
 		p -= 1;
 		//p -= 1; // Move p back one character
 		uint8_t sock = *p - 48;
-		Serial.print("client: "); Serial.println(sock);
 		ESP8266Client client(sock);
 		return client;
 	}
