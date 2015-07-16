@@ -38,7 +38,7 @@ Distributed as-is; no warranty is given.
 ///////////////////////////////
 #define COMMAND_RESPONSE_TIMEOUT 1000
 #define COMMAND_PING_TIMEOUT 3000
-#define WIFI_CONNECT_TIMEOUT 20000
+#define WIFI_CONNECT_TIMEOUT 30000
 #define COMMAND_RESET_TIMEOUT 5000
 #define CLIENT_CONNECT_TIMEOUT 5000
 
