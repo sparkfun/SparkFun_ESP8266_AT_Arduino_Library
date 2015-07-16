@@ -552,9 +552,9 @@ int16_t ESP8266Class::configureTCPServer(uint16_t port, uint8_t create)
 
 int16_t ESP8266Class::ping(IPAddress ip)
 {
-	char ipStr[14];
+	char ipStr[17];
 	sprintf(ipStr, "%d.%d.%d.%d", ip[0], ip[1], ip[2], ip[3]);
-	return ping(String(ip));//ipStr);
+	return ping(ipStr);
 }
 
 int16_t ESP8266Class::ping(char * server)
@@ -770,10 +770,6 @@ char * ESP8266Class::searchBuffer(const char * test)
 			
 		}
 	}
-}
-
-uint8_t sync()
-{
 }
 
 ESP8266Class esp8266;
