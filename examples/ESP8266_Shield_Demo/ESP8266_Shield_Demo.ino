@@ -134,7 +134,6 @@ void connectESP8266()
   // connected. 0 indicates disconnected. (Negative values
   // equate to communication errors.)
   retVal = esp8266.status();
-  Serial.println(retVal);
   if (retVal <= 0)
   {
     Serial.print(F("Connecting to "));
