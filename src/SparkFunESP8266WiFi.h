@@ -143,6 +143,7 @@ public:
 	int16_t connect(const char * ssid);
 	int16_t connect(const char * ssid, const char * pwd);
 	int16_t getAP(char * ssid);
+	int16_t localMAC(char * mac);
 	int16_t disconnect();
 	IPAddress localIP();
 	
