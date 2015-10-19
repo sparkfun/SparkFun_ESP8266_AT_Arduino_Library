@@ -50,6 +50,7 @@ const char ESP8266_DISCONNECT[] = "+CWQAP"; // Disconnect from AP
 //!const char ESP8266_DHCP_EN[] = "+CWDHCP"; // Enable/disable DHCP
 //!const char ESP8266_AUTO_CONNECT[] = "+CWAUTOCONN"; // Connect to AP automatically
 //!const char ESP8266_SET_STA_MAC[] = "+CIPSTAMAC"; // Set MAC address of station
+const char ESP8266_GET_STA_MAC[] = "+CIPSTAMAC"; // Get MAC address of station
 //!const char ESP8266_SET_AP_MAC[] = "+CIPAPMAC"; // Set MAC address of softAP
 //!const char ESP8266_SET_STA_IP[] = "+CIPSTA"; // Set IP address of ESP8266 station
 //!const char ESP8266_SET_AP_IP[] = "+CIPAP"; // Set IP address of ESP8266 softAP
