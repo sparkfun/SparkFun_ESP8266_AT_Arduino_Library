@@ -445,6 +445,29 @@ IPAddress ESP8266Class::localIP()
 	return rsp;
 }
 
+int16_t ESP8266Class::localMAC(char * mac)
+{
+	sendCommand(ESP8266_GET_STA_MAC, ESP8266_CMD_QUERY); // Send "AT+CIPSTAMAC?"
+
+	int16_t rsp = readForResponse(RESPONSE_OK, COMMAND_RESPONSE_TIMEOUT);
+
+	if (rsp > 0)
+	{
+		// Look for "+CIPSTAMAC"
+		char * p = strstr(esp8266RxBuffer, ESP8266_GET_STA_MAC);
+		if (p != NULL)
+		{
+			p += strlen(ESP8266_GET_STA_MAC) + 2;
+			char * q = strchr(p, '"');
+			if (q == NULL) return ESP8266_RSP_UNKNOWN;
+			strncpy(mac, p, q - p); // Copy string to temp char array:
+			return 1;
+		}
+	}
+
+	return rsp;
+}
+
 /////////////////////
 // TCP/IP Commands //
 /////////////////////
