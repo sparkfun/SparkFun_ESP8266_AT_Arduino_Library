@@ -42,7 +42,7 @@ ESP8266Class::ESP8266Class()
 		_state[i] = AVAILABLE;
 }
 
-bool ESP8266Class::begin(unsigned long baudRate, esp8266_serial_port serialPort, HardwareSerial *hwSerial = 0)
+bool ESP8266Class::begin(unsigned long baudRate, esp8266_serial_port serialPort, HardwareSerial *hwSerial)
 {
 	_baud = baudRate;
 	if (serialPort == ESP8266_SOFTWARE_SERIAL)
