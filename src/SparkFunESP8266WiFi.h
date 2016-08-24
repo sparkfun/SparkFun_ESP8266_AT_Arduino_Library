@@ -123,8 +123,8 @@ class ESP8266Class : public Stream
 public:
 	ESP8266Class();
 	
-	bool begin(unsigned long baudRate = 9600, esp8266_serial_port serialPort = ESP8266_SOFTWARE_SERIAL);
-	
+	bool begin(unsigned long baudRate = 9600, esp8266_serial_port serialPort = ESP8266_SOFTWARE_SERIAL, HardwareSerial *hwSerial = 0);
+
 	///////////////////////
 	// Basic AT Commands //
 	///////////////////////

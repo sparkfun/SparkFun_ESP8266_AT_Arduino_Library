@@ -42,7 +42,7 @@ ESP8266Class::ESP8266Class()
 		_state[i] = AVAILABLE;
 }
 
-bool ESP8266Class::begin(unsigned long baudRate, esp8266_serial_port serialPort)
+bool ESP8266Class::begin(unsigned long baudRate, esp8266_serial_port serialPort, HardwareSerial *hwSerial = 0)
 {
 	_baud = baudRate;
 	if (serialPort == ESP8266_SOFTWARE_SERIAL)
@@ -52,8 +52,14 @@ bool ESP8266Class::begin(unsigned long baudRate, esp8266_serial_port serialPort)
 	}
 	else if (serialPort == ESP8266_HARDWARE_SERIAL)
 	{
-		Serial.begin(baudRate);
-		_serial = &Serial;
+		if (hwSerial == 0) {
+			Serial.begin(baudRate);
+			_serial = &Serial;
+		}
+		else {
+			hwSerial->begin(baudRate);
+			_serial = hwSerial;
+		}
 	}
 	
 	if (test())
