@@ -123,6 +123,7 @@ class ESP8266Class : public Stream
 public:
 	ESP8266Class();
 
+
 	bool begin(unsigned long baudRate = 9600, esp8266_serial_port serialPort = ESP8266_SOFTWARE_SERIAL, HardwareSerial *hwSerial = 0);
 
 	///////////////////////
@@ -133,7 +134,7 @@ public:
 	int16_t getVersion(char * ATversion, char * SDKversion, char * compileTime);
 	bool echo(bool enable);
 	bool setBaud(unsigned long baud);
-
+	
 	////////////////////
 	// WiFi Functions //
 	////////////////////
@@ -146,7 +147,7 @@ public:
 	int16_t localMAC(char * mac);
 	int16_t disconnect();
 	IPAddress localIP();
-
+	
 	/////////////////////
 	// TCP/IP Commands //
 	/////////////////////
@@ -160,14 +161,14 @@ public:
 	int16_t configureTCPServer(uint16_t port, uint8_t create = 1);
 	int16_t ping(IPAddress ip);
 	int16_t ping(char * server);
-
+		
 	//////////////////////////
 	// Custom GPIO Commands //
 	//////////////////////////
 	int16_t pinMode(uint8_t pin, uint8_t mode);
 	int16_t digitalWrite(uint8_t pin, uint8_t state);
 	int8_t digitalRead(uint8_t pin);
-
+	
 	///////////////////////////////////
 	// Virtual Functions from Stream //
 	///////////////////////////////////
@@ -176,7 +177,7 @@ public:
 	int read();
 	int peek();
 	void flush();
-
+	
 	friend class ESP8266Client;
 	friend class ESP8266ClientReadBuffer;
 	friend class ESP8266Server;
