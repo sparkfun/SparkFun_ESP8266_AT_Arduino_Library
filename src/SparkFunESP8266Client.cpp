@@ -131,7 +131,7 @@ uint8_t ESP8266Client::connected()
 		return 0;
 	else if (available() > 0)
 		return 1;
-	else if (status() == ESP8266_STATUS_CONNECTED)
+	else if (esp8266._status.stat == ESP8266_STATUS_CONNECTED)
 		return 1;
 	
 	return 0;

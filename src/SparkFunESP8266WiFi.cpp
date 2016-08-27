@@ -312,9 +312,9 @@ int16_t ESP8266Class::status()
 		{
 		case ESP8266_STATUS_GOTIP: // 3
 		case ESP8266_STATUS_DISCONNECTED: // 4 - "Client" disconnected, not wifi
+		case ESP8266_STATUS_CONNECTED: // Connected, but haven't gotten an IP
 			return 1;
 			break;
-		case ESP8266_STATUS_CONNECTED: // Connected, but haven't gotten an IP
 		case ESP8266_STATUS_NOWIFI: // No WiFi configured
 			return 0;
 			break;
