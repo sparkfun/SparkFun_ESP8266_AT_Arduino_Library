@@ -26,6 +26,9 @@ Distributed as-is; no warranty is given.
 #include <IPAddress.h>
 #include "Client.h"
 #include "SparkFunESP8266WiFi.h"
+#include "SparkFunESP8266ClientReadBuffer.h"
+
+#define ESP8266_CLIENT_MAX_BUFFER_SIZE 256
 
 class ESP8266Client : public Client {
 	
@@ -58,10 +61,11 @@ public:
 	using Print::write;
 
 private:
+	ESP8266ClientReadBuffer receiveBuffer;
 	static uint16_t _srcport;
 	uint16_t  _socket;
 	bool ipMuxEn;
-	
+
 
 	uint8_t getFirstSocket();
 };
