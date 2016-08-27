@@ -52,20 +52,7 @@ void ESP8266ClientReadBuffer::fillReceiveBuffer() {
 		delay(10);
 	}
 
-
-	Serial.println("");
 	this->cleanReceiveBufferFromAT();
-	Serial.print("\r\n -- CLEAN -- Filled receive buffer: ");
-	for (int i = 0; i < receiveBufferSize; i++) {
-		if ((char)receiveBuffer[i] != 0)
-			Serial.print((char)receiveBuffer[i]);
-		else
-			Serial.print("NULL");
-		Serial.print("[");
-		Serial.print(receiveBuffer[i], HEX);
-		Serial.print("] ");
-	}
-	Serial.println("");
 }
 
 void ESP8266ClientReadBuffer::cleanReceiveBufferFromAT() {

@@ -525,42 +525,27 @@ int16_t ESP8266Class::tcpSend(uint8_t linkID, const uint8_t *buf, size_t size)
 		return ESP8266_CMD_BAD;
 	char params[8];
 	sprintf(params, "%d,%d", linkID, size);
-	Serial.print("Sending via tcp - params: "); Serial.print(linkID); Serial.print(", "); Serial.println(size);
 	sendCommand(ESP8266_TCP_SEND, ESP8266_CMD_SETUP, params);
 
 	int16_t rsp = readForResponses(RESPONSE_OK, RESPONSE_ERROR, COMMAND_RESPONSE_TIMEOUT);
 	//if (rsp > 0)
 	if (rsp != ESP8266_RSP_FAIL)
 	{
-		Serial.println("nearly there..");
-		Serial.print("size: ");
-		Serial.println(size);
-
-		Serial.print("payload: ");
-		char deleteme[2];
-		deleteme[1] = 0x00;
-		for (int i = 0; i < size; i++) {
-			deleteme[0] = buf[i];
-			Serial.print(deleteme);
-		}
-		Serial.println("");
-
-		//print((const char *)buf);
 		for (size_t i = 0; i < size; i++)
 			write(buf[i]);
 		
 		rsp = readForResponse("SEND OK", COMMAND_RESPONSE_TIMEOUT);
 
 		if (rsp > 0) {
-			Serial.println("Send successful :)");
+			//Serial.println("Send successful :)");
 			return size;
 		}
 		else {
-			Serial.println("Send not successful :(");
+			//Serial.println("Send not successful :(");
 		}
 	}
 	else {
-		Serial.println("cannot send. :(");
+		//Serial.println("cannot send. :(");
 	}
 
 	return rsp;
