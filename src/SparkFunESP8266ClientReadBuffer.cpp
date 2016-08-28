@@ -16,7 +16,7 @@ int ESP8266ClientReadBuffer::available()
 		// Check again just to be sure:
 		available = esp8266.available();
 	}
-	return esp8266.available();
+	return available;
 }
 
 int ESP8266ClientReadBuffer::read()
