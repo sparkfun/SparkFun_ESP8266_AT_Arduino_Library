@@ -8,9 +8,9 @@ http://github.com/sparkfun/SparkFun_ESP8266_AT_Arduino_Library
 !!! Description Here !!!
 
 Development environment specifics:
-	IDE: Arduino 1.6.5
-	Hardware Platform: Arduino Uno
-	ESP8266 WiFi Shield Version: 1.0
+IDE: Arduino 1.6.5
+Hardware Platform: Arduino Uno
+ESP8266 WiFi Shield Version: 1.0
 
 This code is beerware; if you see me (or any other SparkFun employee) at the
 local, and you've found our code helpful, please buy us a round!
@@ -79,7 +79,7 @@ typedef enum esp8266_connect_status {
 	ESP8266_STATUS_GOTIP = 2,
 	ESP8266_STATUS_CONNECTED = 3,
 	ESP8266_STATUS_DISCONNECTED = 4,
-	ESP8266_STATUS_NOWIFI = 5	
+	ESP8266_STATUS_NOWIFI = 5
 };
 
 typedef enum esp8266_serial_port {
@@ -122,9 +122,10 @@ class ESP8266Class : public Stream
 {
 public:
 	ESP8266Class();
-	
-	bool begin(unsigned long baudRate = 9600, esp8266_serial_port serialPort = ESP8266_SOFTWARE_SERIAL);
-	
+
+
+	bool begin(unsigned long baudRate = 9600, esp8266_serial_port serialPort = ESP8266_SOFTWARE_SERIAL, HardwareSerial *hwSerial = 0);
+
 	///////////////////////
 	// Basic AT Commands //
 	///////////////////////
@@ -178,14 +179,15 @@ public:
 	void flush();
 	
 	friend class ESP8266Client;
+	friend class ESP8266ClientReadBuffer;
 	friend class ESP8266Server;
 
-    int16_t _state[ESP8266_MAX_SOCK_NUM];
-	
+	int16_t _state[ESP8266_MAX_SOCK_NUM];
+
 protected:
-    Stream* _serial;
+	Stream* _serial;
 	unsigned long _baud;
-	
+
 private:
 	//////////////////////////
 	// Command Send/Receive //
@@ -193,25 +195,25 @@ private:
 	void sendCommand(const char * cmd, enum esp8266_command_type type = ESP8266_CMD_EXECUTE, const char * params = NULL);
 	int16_t readForResponse(const char * rsp, unsigned int timeout);
 	int16_t readForResponses(const char * pass, const char * fail, unsigned int timeout);
-	
+
 	//////////////////
 	// Buffer Stuff // 
 	//////////////////
 	/// clearBuffer() - Reset buffer pointer, set all values to 0
 	void clearBuffer();
-	
+
 	/// readByteToBuffer() - Read first byte from UART receive buffer
 	/// and store it in rxBuffer.
 	unsigned int readByteToBuffer();
-	
+
 	/// searchBuffer([test]) - Search buffer for string [test]
 	/// Success: Returns pointer to beginning of string
 	/// Fail: returns NULL
 	//! TODO: Fix this function so it searches circularly
 	char * searchBuffer(const char * test);
-	
+
 	esp8266_status _status;
-	
+
 	uint8_t sync();
 };
 

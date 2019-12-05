@@ -85,30 +85,22 @@ size_t ESP8266Client::write(const uint8_t *buf, size_t size)
 
 int ESP8266Client::available()
 {
-	int available = esp8266.available();
-	if (available == 0)
-	{
-		// Delay for the amount of time it'd take to receive one character
-		delayMicroseconds((1 / esp8266._baud) * 10 * 1E6);
-		// Check again just to be sure:
-		available = esp8266.available();
-	}
-	return esp8266.available();
+	return receiveBuffer.available();
 }
 
 int ESP8266Client::read()
 {
-	return esp8266.read();
+	return receiveBuffer.read();
 }
 
 int ESP8266Client::read(uint8_t *buf, size_t size)
 {
-	if (esp8266.available() < size)
+	if (available() + esp8266.available() < size)
 		return 0;
 	
 	for (int i=0; i<size; i++)
 	{
-		buf[i] = esp8266.read();
+		buf[i] = this->read();
 	}
 	
 	return 1;
@@ -139,7 +131,7 @@ uint8_t ESP8266Client::connected()
 		return 0;
 	else if (available() > 0)
 		return 1;
-	else if (status() == ESP8266_STATUS_CONNECTED)
+	else if (esp8266._status.stat == ESP8266_STATUS_CONNECTED)
 		return 1;
 	
 	return 0;
