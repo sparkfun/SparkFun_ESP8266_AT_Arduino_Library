@@ -523,7 +523,7 @@ int16_t ESP8266Class::tcpSend(uint8_t linkID, const uint8_t *buf, size_t size)
 	//if (rsp > 0)
 	if (rsp != ESP8266_RSP_FAIL)
 	{
-		print((const char *)buf);
+		_serial->write(buf, size);
 		
 		rsp = readForResponse("SEND OK", COMMAND_RESPONSE_TIMEOUT);
 		
